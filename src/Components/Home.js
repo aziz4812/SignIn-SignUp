@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import SIgn_img from './SIgn_img'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 
 const Home = () => {
-
+    const navigate = useNavigate()
 
     const[inpval,setInpval] = useState({
         name:"",
@@ -56,6 +56,7 @@ const Home = () => {
             console.log("data added successfuly");
 
             localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
+            navigate("/login")
         }
     }
 
