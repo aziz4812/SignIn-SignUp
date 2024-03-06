@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import SIgn_img from './SIgn_img'
-import { NavLink,useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Home = () => {
     const navigate = useNavigate()
-
+    
+    const [data,setData] = useState([]);
     const[inpval,setInpval] = useState({
         name:"",
         email:"",
@@ -14,18 +15,8 @@ const Home = () => {
         password:""
     })
 
-    const [data,setData] = useState([]);
-
     const getdata = (e)=> {
-        // console.log(e.target.value);
-
-
-
         const {value,name} = e.target;
-        // console.log(value,name)
-
-
-
         setInpval(() =>{
             return {
                 ...inpval,
@@ -34,12 +25,9 @@ const Home = () => {
         })
     }
 
-
     const addData = (e) => {
         e.preventDefault();
-
         const {name,email,date,password} = inpval;
-
         if(name === ""){
             alert("name field is required")
         }else if(email === ""){
@@ -53,8 +41,6 @@ const Home = () => {
         }else if(password.length < 5){
             alert("password length greater five")
         }else{
-            console.log("data added successfuly");
-
             localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
             navigate("/login")
         }

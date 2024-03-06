@@ -18,10 +18,8 @@ const Login = () => {
   const [data, setData] = useState([]);
 
   const getdata = (e) => {
-    // console.log(e.target.value);
 
     const { value, name } = e.target;
-    // console.log(value,name)
 
     setInpval(() => {
       return {
@@ -58,7 +56,7 @@ const Login = () => {
         }else{
             console.log("user login Successfully")
 
-            localStorage.setItem("user_login",JSON.stringify(getuserArr))
+            localStorage.setItem("user_login",JSON.stringify(userlogin))
 
 
             history("/details")
